@@ -1,0 +1,19 @@
+<script src="http://localhost:9000/socket.io/socket.io.js"></script>
+<script src="jquery.min.js"></script>
+<body>
+
+	<input class='push' type='button' value='Submit'>
+	<input type='text' class='text'>
+<script>
+  var socket = io('http://localhost:9000');
+  socket.on('news', function (data) {
+    alert(data);
+  });
+	function push() {
+		alert('sending ' + $('.text').val());
+		socket.emit('click event', $('.text').val());
+		return false;
+	}
+	$('body').on('click', '.push', push);
+</script>
+</body>
